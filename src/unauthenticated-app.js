@@ -2,7 +2,8 @@
 import {jsx} from '@emotion/core'
 
 import React from 'react'
-import {Input, Button, Spinner, FormGroup, ErrorMessage} from './components/lib'
+import {Input, Button, Spinner, FormGroup, ErrorMessage} from './components/lib';
+import {Modal, ModalContents, ModalOpenButton} from './components/modal';
 import {useAuth} from './context/auth-context'
 import {useAsync} from './utils/hooks'
 
@@ -78,16 +79,28 @@ function UnauthenticatedApp() {
           gridGap: '0.75rem',
         }}
       >
-        <Button variant="primary">Login</Button>
-        <LoginForm
-          onSubmit={login}
-          submitButton={<Button variant="primary">Login</Button>}
-        />
-        <Button variant="secondary">Register</Button>
-        <LoginForm
-          onSubmit={register}
-          submitButton={<Button variant="secondary">Register</Button>}
-        />
+      <Modal>
+        <ModalOpenButton>
+          <Button variant="primary">Login</Button>
+        </ModalOpenButton>
+        <ModalContents aria-label="Login form" title="Login">
+          <LoginForm
+            onSubmit={login}
+            submitButton={<Button variant="primary">Login</Button>}
+          />
+        </ModalContents>
+      </Modal>
+      <Modal>
+        <ModalOpenButton>
+          <Button variant="secondary">Register</Button>
+        </ModalOpenButton>
+        <ModalContents aria-label="Registration form" title="Register">
+          <LoginForm
+            onSubmit={register}
+            submitButton={<Button variant="secondary">Register</Button>}
+          />
+        </ModalContents>
+      </Modal>
       </div>
     </div>
   )

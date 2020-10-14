@@ -5,6 +5,7 @@ import {Link as RouterLink} from 'react-router-dom'
 import styled from '@emotion/styled/macro'
 import {keyframes} from '@emotion/core'
 import {FaSpinner} from 'react-icons/fa'
+import {Dialog as ReachDialog} from '@reach/dialog'
 import * as colors from '../styles/colors'
 import * as mq from '../styles/media-queries'
 
@@ -72,6 +73,18 @@ const inputStyles = {
 
 const Input = styled.input({borderRadius: '3px'}, inputStyles)
 const Textarea = styled.textarea(inputStyles)
+
+const Dialog = styled(ReachDialog)({
+  maxWidth: '450px',
+  borderRadius: '3px',
+  paddingBottom: '3.5em',
+  boxShadow: '0 10px 30px -5px rgba(0, 0, 0, 0.2)',
+  margin: '20vh auto',
+  [mq.small]: {
+    width: '100%',
+    margin: '10vh auto',
+  },
+});
 
 const FormGroup = styled.div({
   display: 'flex',
@@ -156,6 +169,7 @@ export {
   Button,
   Input,
   Textarea,
+  Dialog,
   FormGroup,
   FullPageSpinner,
   Link,
