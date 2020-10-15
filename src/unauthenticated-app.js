@@ -74,7 +74,7 @@ function UnauthenticatedApp() {
         placeholder="Rajat"
         ref={register({
           required: "this is a required",
-          maxLength: {
+          minLength: {
             value: 2,
             message: "Max length is 2"
           }
@@ -121,6 +121,17 @@ function UnauthenticatedApp() {
         })}
       />
       {errors.password && <p>{errors.password.message}</p>}
+
+      <label htmlFor="password">Password confirmation</label>
+      <input
+        name="passwordConfirmation"
+        placeholder=""
+        type="password"
+        ref={register({
+          required: "this is required",
+        })}
+      />
+      {errors.passwordConfirmation && <p>{errors.passwordConfirmation.message}</p>}
 
       <input type="submit" />
     </form>
